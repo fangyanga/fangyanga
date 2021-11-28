@@ -25,7 +25,7 @@ load.project()
 
 You can also embed plots, for example:
 
-```{r pressure, echo=FALSE}
+```{r enrolments}
 ggplot(age_range,aes(x=age_range, fill=age_range))+geom_bar() 
 ggplot(highest_education_level,aes(x=highest_education_level, fill=highest_education_level))+geom_bar()  
 ggplot(employment_status,aes(x=employment_status, fill=employment_status))+geom_bar()  
@@ -39,3 +39,35 @@ ggplot(detected_country_1,aes(x=detected_country_1[,1],y=detected_country_1[,2],
 ```
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+```{r question.response,echo = FALSE}
+
+ggplot(t, aes(x=quiz_question,y=answers_numbers,fill=answers_numbers))+geom_bar(stat="identity")+coord_polar(theta = "x", direction=1)
+picture=ggplot(t_1, aes(x=question,y=No.people,fill=No.people))+geom_bar(stat="identity")+coord_polar(theta = "x", direction=1)
+picture+scale_fill_gradient(low='white',high='red')+ #渐变色填充，由白到红
+  theme_bw()
+pictire_1=ggplot(rep, aes(x=question_1,y=repeated_answers,fill=repeated_answers))+geom_bar(stat="identity")+coord_polar(theta = "x", direction=1)
+pictire_1 +scale_fill_gradient(low='pink',high='green')+ 
+  theme_bw()
+```
+```{r}
+ggplot(t_2, aes(x = step, y = numbers)) + geom_boxplot() 
+ggplot (t_2, aes (x = step, y = numbers, size = numbers, colour =numbers)) +
+  # 散点图函数：alpha设置散点透明度
+  geom_point (position = "jitter") +
+  # 使散点的面积正比与变量值
+  scale_size_area () +scale_color_gradient2(low = "yellow", mid = "green", high = "brown")
+ggplot(t_3, aes(x = step, y = numbers_null)) +  geom_boxplot()
+ggplot (t_3, aes (x = step, y = numbers_null, size = numbers_null, colour =numbers_null)) +
+  # 散点图函数：alpha设置散点透明度
+  geom_point (position = "jitter") +
+  # 使散点的面积正比与变量值
+  scale_size_area () +scale_color_gradient2(low = "pink", mid = "red", high = "blue")
+ggplot(t_4, aes(x = step, y = Percentage)) + geom_boxplot() 
+ggplot (t_4, aes (x = step, y = Percentage, size = Percentage, colour =Percentage)) +
+  # 散点图函数：alpha设置散点透明度
+  geom_point (position = "jitter") +
+  # 使散点的面积正比与变量值
+  scale_size_area () +scale_color_gradient2(low = "blue", mid = "orange", high = "purple")
+
+```
