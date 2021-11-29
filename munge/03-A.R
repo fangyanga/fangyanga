@@ -1,6 +1,4 @@
-setwd("/Users/wangyahan/Desktop/Data Management and Explor/DM")
-library('ProjectTemplate')
-load.project()
+
 cyber.security.step.activity_1=bind_rows(cyber.security.1_step.activity,cyber.security.2_step.activity,cyber.security.3_step.activity,cyber.security.4_step.activity ,cyber.security.5_step.activity,cyber.security.6_step.activity,cyber.security.7_step.activity)
 #Count the number of answers to each step
 (t_2=table(cyber.security.step.activity_1$step))

@@ -71,3 +71,15 @@ ggplot (t_4, aes (x = step, y = Percentage, size = Percentage, colour =Percentag
   scale_size_area () +scale_color_gradient2(low = "blue", mid = "orange", high = "purple")
 
 ```
+
+
+
+```{r }
+
+United_1$Number_of_courses <- as.factor(United_1$Number_of_courses)
+fit.full=glm(Number_of_courses~gender+age_range+highest_education_level+employment_status+employment_area+country,data=United_1,family=binomial())
+summary(fit.full) 
+
+
+
+```

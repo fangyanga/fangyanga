@@ -1,0 +1,599 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\title{csc8631 Report}
+\author{Yahan Wang 200784463}
+\date{11/23/2021}
+
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={csc8631 Report},
+  pdfauthor={Yahan Wang 200784463},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\begin{document}
+\maketitle
+
+\hypertarget{r-markdown}{%
+\subsection{R Markdown}\label{r-markdown}}
+
+This is an R Markdown document. Markdown is a simple formatting syntax
+for authoring HTML, PDF, and MS Word documents. For more details on
+using R Markdown see \url{http://rmarkdown.rstudio.com}.
+
+When you click the \textbf{Knit} button a document will be generated
+that includes both content as well as the output of any embedded R code
+chunks within the document. You can embed an R code chunk like this:
+
+\hypertarget{including-plots}{%
+\subsection{Including Plots}\label{including-plots}}
+
+You can also embed plots, for example:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(age\_range,}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\NormalTok{age\_range, }\AttributeTok{fill=}\NormalTok{age\_range))}\SpecialCharTok{+}\FunctionTok{geom\_bar}\NormalTok{() }
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Report_files/figure-latex/enrolments-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(highest\_education\_level,}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\NormalTok{highest\_education\_level, }\AttributeTok{fill=}\NormalTok{highest\_education\_level))}\SpecialCharTok{+}\FunctionTok{geom\_bar}\NormalTok{()  }
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Report_files/figure-latex/enrolments-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(employment\_status,}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\NormalTok{employment\_status, }\AttributeTok{fill=}\NormalTok{employment\_status))}\SpecialCharTok{+}\FunctionTok{geom\_bar}\NormalTok{()  }
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Report_files/figure-latex/enrolments-3.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(employment\_area,}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\NormalTok{employment\_area, }\AttributeTok{fill=}\NormalTok{employment\_area))}\SpecialCharTok{+}\FunctionTok{geom\_bar}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Report_files/figure-latex/enrolments-4.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{country\_1 }\OtherTok{=} \FunctionTok{data.frame}\NormalTok{(country\_1)}
+\FunctionTok{ggplot}\NormalTok{(country\_1,}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\NormalTok{country\_1[,}\DecValTok{1}\NormalTok{],}\AttributeTok{y=}\NormalTok{country\_1[,}\DecValTok{2}\NormalTok{],}\AttributeTok{fill=}\NormalTok{country\_1[,}\DecValTok{1}\NormalTok{])) }\SpecialCharTok{+}
+  \FunctionTok{geom\_bar}\NormalTok{(}\AttributeTok{stat =} \StringTok{"identity"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Report_files/figure-latex/enrolments-5.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{detected\_country\_1 }\OtherTok{=} \FunctionTok{data.frame}\NormalTok{(detected\_country\_1)}
+\FunctionTok{ggplot}\NormalTok{(detected\_country\_1,}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\NormalTok{detected\_country\_1[,}\DecValTok{1}\NormalTok{],}\AttributeTok{y=}\NormalTok{detected\_country\_1[,}\DecValTok{2}\NormalTok{],}\AttributeTok{fill=}\NormalTok{detected\_country\_1[,}\DecValTok{1}\NormalTok{])) }\SpecialCharTok{+}
+  \FunctionTok{geom\_bar}\NormalTok{(}\AttributeTok{stat =} \StringTok{"identity"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Report_files/figure-latex/enrolments-6.pdf}
+
+Note that the \texttt{echo\ =\ FALSE} parameter was added to the code
+chunk to prevent printing of the R code that generated the plot.
+
+\includegraphics{Report_files/figure-latex/question.response-1.pdf}
+\includegraphics{Report_files/figure-latex/question.response-2.pdf}
+\includegraphics{Report_files/figure-latex/question.response-3.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(t\_2, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ step, }\AttributeTok{y =}\NormalTok{ numbers)) }\SpecialCharTok{+} \FunctionTok{geom\_boxplot}\NormalTok{() }
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Report_files/figure-latex/unnamed-chunk-1-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{ (t\_2, }\FunctionTok{aes}\NormalTok{ (}\AttributeTok{x =}\NormalTok{ step, }\AttributeTok{y =}\NormalTok{ numbers, }\AttributeTok{size =}\NormalTok{ numbers, }\AttributeTok{colour =}\NormalTok{numbers)) }\SpecialCharTok{+}
+  \CommentTok{\# 散点图函数：alpha设置散点透明度}
+  \FunctionTok{geom\_point}\NormalTok{ (}\AttributeTok{position =} \StringTok{"jitter"}\NormalTok{) }\SpecialCharTok{+}
+  \CommentTok{\# 使散点的面积正比与变量值}
+  \FunctionTok{scale\_size\_area}\NormalTok{ () }\SpecialCharTok{+}\FunctionTok{scale\_color\_gradient2}\NormalTok{(}\AttributeTok{low =} \StringTok{"yellow"}\NormalTok{, }\AttributeTok{mid =} \StringTok{"green"}\NormalTok{, }\AttributeTok{high =} \StringTok{"brown"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Report_files/figure-latex/unnamed-chunk-1-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(t\_3, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ step, }\AttributeTok{y =}\NormalTok{ numbers\_null)) }\SpecialCharTok{+}  \FunctionTok{geom\_boxplot}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Report_files/figure-latex/unnamed-chunk-1-3.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{ (t\_3, }\FunctionTok{aes}\NormalTok{ (}\AttributeTok{x =}\NormalTok{ step, }\AttributeTok{y =}\NormalTok{ numbers\_null, }\AttributeTok{size =}\NormalTok{ numbers\_null, }\AttributeTok{colour =}\NormalTok{numbers\_null)) }\SpecialCharTok{+}
+  \CommentTok{\# 散点图函数：alpha设置散点透明度}
+  \FunctionTok{geom\_point}\NormalTok{ (}\AttributeTok{position =} \StringTok{"jitter"}\NormalTok{) }\SpecialCharTok{+}
+  \CommentTok{\# 使散点的面积正比与变量值}
+  \FunctionTok{scale\_size\_area}\NormalTok{ () }\SpecialCharTok{+}\FunctionTok{scale\_color\_gradient2}\NormalTok{(}\AttributeTok{low =} \StringTok{"pink"}\NormalTok{, }\AttributeTok{mid =} \StringTok{"red"}\NormalTok{, }\AttributeTok{high =} \StringTok{"blue"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Report_files/figure-latex/unnamed-chunk-1-4.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(t\_4, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ step, }\AttributeTok{y =}\NormalTok{ Percentage)) }\SpecialCharTok{+} \FunctionTok{geom\_boxplot}\NormalTok{() }
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Report_files/figure-latex/unnamed-chunk-1-5.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{ (t\_4, }\FunctionTok{aes}\NormalTok{ (}\AttributeTok{x =}\NormalTok{ step, }\AttributeTok{y =}\NormalTok{ Percentage, }\AttributeTok{size =}\NormalTok{ Percentage, }\AttributeTok{colour =}\NormalTok{Percentage)) }\SpecialCharTok{+}
+  \CommentTok{\# 散点图函数：alpha设置散点透明度}
+  \FunctionTok{geom\_point}\NormalTok{ (}\AttributeTok{position =} \StringTok{"jitter"}\NormalTok{) }\SpecialCharTok{+}
+  \CommentTok{\# 使散点的面积正比与变量值}
+  \FunctionTok{scale\_size\_area}\NormalTok{ () }\SpecialCharTok{+}\FunctionTok{scale\_color\_gradient2}\NormalTok{(}\AttributeTok{low =} \StringTok{"blue"}\NormalTok{, }\AttributeTok{mid =} \StringTok{"orange"}\NormalTok{, }\AttributeTok{high =} \StringTok{"purple"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Report_files/figure-latex/unnamed-chunk-1-6.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{United\_1}\SpecialCharTok{$}\NormalTok{Number\_of\_courses }\OtherTok{\textless{}{-}} \FunctionTok{as.factor}\NormalTok{(United\_1}\SpecialCharTok{$}\NormalTok{Number\_of\_courses)}
+\NormalTok{fit.full}\OtherTok{=}\FunctionTok{glm}\NormalTok{(Number\_of\_courses}\SpecialCharTok{\textasciitilde{}}\NormalTok{gender}\SpecialCharTok{+}\NormalTok{age\_range}\SpecialCharTok{+}\NormalTok{highest\_education\_level}\SpecialCharTok{+}\NormalTok{employment\_status}\SpecialCharTok{+}\NormalTok{employment\_area}\SpecialCharTok{+}\NormalTok{country,}\AttributeTok{data=}\NormalTok{United\_1,}\AttributeTok{family=}\FunctionTok{binomial}\NormalTok{())}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: glm.fit: algorithm did not converge
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary}\NormalTok{(fit.full) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## glm(formula = Number_of_courses ~ gender + age_range + highest_education_level + 
+##     employment_status + employment_area + country, family = binomial(), 
+##     data = United_1)
+## 
+## Deviance Residuals: 
+##        Min          1Q      Median          3Q         Max  
+## -2.349e-04   2.100e-08   2.100e-08   2.100e-08   2.422e-04  
+## 
+## Coefficients:
+##                                                      Estimate Std. Error
+## (Intercept)                                        -3.478e+02  5.312e+05
+## gendermale                                          6.642e-02  8.691e+03
+## gendernonbinary                                    -1.805e+02  2.286e+05
+## genderother                                        -2.761e+02  4.536e+05
+## age_range>65                                        8.136e+01  3.335e+05
+## age_range18-25                                      3.245e+01  3.351e+05
+## age_range26-35                                      8.540e+01  3.330e+05
+## age_range36-45                                      8.075e+01  3.096e+05
+## age_range46-55                                     -2.335e+01  3.612e+05
+## age_range56-65                                      1.141e+01  3.611e+05
+## highest_education_levelless_than_secondary          1.692e+02  2.935e+05
+## highest_education_levelprofessional                 2.136e+02  2.261e+05
+## highest_education_levelsecondary                    2.144e+02  2.228e+05
+## highest_education_leveltertiary                     1.954e+02  2.217e+05
+## highest_education_leveluniversity_degree            2.279e+02  2.213e+05
+## highest_education_leveluniversity_doctorate         8.400e+01  2.207e+05
+## highest_education_leveluniversity_masters           1.572e+02  2.208e+05
+## employment_statuslooking_for_work                  -8.845e+01  2.295e+05
+## employment_statusnot_working                       -6.254e+00  2.685e+05
+## employment_statusretired                            1.033e+02  3.893e+05
+## employment_statusself_employed                      1.002e+02  2.724e+05
+## employment_statusunemployed                         5.571e+01  2.601e+05
+## employment_statusworking_full_time                 -1.005e+01  2.720e+05
+## employment_statusworking_part_time                 -4.589e+01  2.716e+05
+## employment_areaarmed_forces_and_emergency_services  1.028e+02  1.643e+05
+## employment_areabusiness_consulting_and_management   3.669e+01  1.482e+05
+## employment_areacharities_and_voluntary_work         3.477e+01  1.316e+05
+## employment_areacreative_arts_and_culture           -7.983e+01  2.087e+05
+## employment_areaenergy_and_utilities                 1.450e+02  1.449e+05
+## employment_areaengineering_and_manufacturing        7.927e+01  1.052e+05
+## employment_areaenvironment_and_agriculture         -1.125e+02  1.336e+05
+## employment_areahealth_and_social_care               3.093e+01  1.328e+05
+## employment_areahospitality_tourism_and_sport        7.118e+01  1.925e+05
+## employment_areait_and_information_services          1.403e+02  1.349e+05
+## employment_arealaw                                  1.594e+02  1.072e+05
+## employment_areamarketing_advertising_and_pr         1.041e+00  1.664e+05
+## employment_areamedia_and_publishing                 7.809e+01  1.551e+05
+## employment_areaproperty_and_construction            4.100e+01  1.017e+05
+## employment_areapublic_sector                        5.292e+01  1.005e+05
+## employment_arearecruitment_and_pr                   5.488e+01  1.893e+05
+## employment_arearetail_and_sales                     6.716e+01  1.766e+05
+## employment_areascience_and_pharmaceuticals          3.521e+01  1.467e+05
+## employment_areateaching_and_education               1.465e+02  1.436e+05
+## employment_areatransport_and_logistics              2.160e+00  3.985e+05
+## countryAE                                           1.018e+02  4.661e+05
+## countryAF                                           1.647e+01  5.392e+05
+## countryAL                                          -9.828e+01  5.843e+05
+## countryAM                                           1.538e+02  5.204e+05
+## countryAO                                          -6.923e+01  5.729e+05
+## countryAR                                           3.242e+01  5.965e+05
+## countryAT                                           1.407e+02  4.728e+05
+## countryAU                                           2.900e+02  4.190e+05
+## countryAZ                                           1.768e+02  4.831e+05
+## countryBA                                           1.186e+02  5.264e+05
+## countryBB                                           3.308e+02  5.254e+05
+## countryBD                                           2.138e+02  5.120e+05
+## countryBE                                           2.112e+02  5.031e+05
+## countryBG                                           1.086e+02  3.727e+05
+## countryBO                                           1.041e+02  5.757e+05
+## countryBR                                           2.326e+02  5.434e+05
+## countryBW                                          -2.626e+01  5.470e+05
+## countryBY                                           4.010e+00  5.940e+05
+## countryCA                                           1.797e+02  4.509e+05
+## countryCH                                           1.242e+02  5.406e+05
+## countryCI                                          -8.542e+01  5.548e+05
+## countryCL                                           2.078e+01  4.483e+05
+## countryCM                                           9.177e+00  5.263e+05
+## countryCN                                           1.773e+02  5.758e+05
+## countryCO                                          -1.513e+01  4.094e+05
+## countryCR                                           1.412e+02  7.391e+05
+## countryCW                                           6.935e+01  5.756e+05
+## countryCY                                           1.084e+02  4.665e+05
+## countryDE                                           2.898e+02  4.495e+05
+## countryDK                                           1.630e+02  6.461e+05
+## countryEC                                          -6.458e+01  5.102e+05
+## countryEG                                           2.702e+02  4.439e+05
+## countryES                                           1.732e+02  3.871e+05
+## countryET                                          -1.392e+01  5.032e+05
+## countryFJ                                          -6.050e-01  5.379e+05
+## countryFR                                           1.073e+02  4.523e+05
+## countryGB                                           2.116e+02  4.456e+05
+## countryGG                                          -6.916e+01  5.730e+05
+## countryGH                                           1.458e+02  4.254e+05
+## countryGI                                           2.581e+02  5.706e+05
+## countryGR                                           1.629e+02  3.891e+05
+## countryGY                                          -2.832e+00  6.170e+05
+## countryHK                                           1.335e+02  5.826e+05
+## countryHN                                          -6.244e+01  6.477e+05
+## countryHR                                           7.800e+01  5.104e+05
+## countryHT                                           1.208e+02  5.792e+05
+## countryHU                                          -2.034e+01  5.162e+05
+## countryID                                           2.110e+02  4.591e+05
+## countryIE                                           2.669e+02  5.033e+05
+## countryIL                                           6.128e+00  7.635e+05
+## countryIN                                           2.068e+02  3.919e+05
+## countryIQ                                           9.799e+01  4.749e+05
+## countryIR                                          -8.461e+00  4.058e+05
+## countryIT                                           2.221e+02  3.807e+05
+## countryJE                                           1.413e+02  7.391e+05
+## countryJO                                           1.093e+02  4.952e+05
+## countryJP                                           1.059e+02  3.997e+05
+## countryKE                                           1.021e+02  4.615e+05
+## countryKH                                          -2.622e+01  5.571e+05
+## countryKR                                           1.773e+02  5.760e+05
+## countryLK                                          -2.626e+01  5.470e+05
+## countryLR                                           9.116e+01  4.875e+05
+## countryLT                                           1.469e+00  5.115e+05
+## countryLV                                           7.316e+01  5.038e+05
+## countryMD                                          -7.118e+01  5.150e+05
+## countryME                                           1.478e+02  5.236e+05
+## countryMK                                           8.909e+01  4.869e+05
+## countryMM                                           3.366e+01  5.246e+05
+## countryMN                                          -3.172e+01  5.803e+05
+## countryMU                                          -5.672e+01  5.555e+05
+## countryMW                                           6.535e+01  5.754e+05
+## countryMX                                           1.379e+02  4.510e+05
+## countryMY                                           1.031e+02  4.715e+05
+## countryNG                                           1.797e+02  4.460e+05
+## countryNL                                           3.250e+02  4.497e+05
+## countryNO                                           2.534e+01  4.443e+05
+## countryNP                                           4.263e+01  4.273e+05
+## countryNZ                                           1.805e+02  4.730e+05
+## countryOM                                           1.032e+02  5.037e+05
+## countryPE                                           1.627e+02  5.281e+05
+## countryPH                                           6.632e+01  3.665e+05
+## countryPK                                           1.429e+02  3.827e+05
+## countryPL                                           1.027e+02  5.047e+05
+## countryPT                                           3.097e+01  4.450e+05
+## countryRO                                           3.776e+01  4.691e+05
+## countryRS                                           9.514e+01  4.714e+05
+## countryRU                                           7.555e+01  4.383e+05
+## countryRW                                          -8.830e+01  6.444e+05
+## countrySA                                           1.381e+02  4.452e+05
+## countrySD                                          -2.633e+01  5.474e+05
+## countrySE                                           4.340e+02  4.616e+05
+## countrySG                                           2.473e+02  4.698e+05
+## countrySV                                          -4.812e+00  4.464e+05
+## countryTH                                           1.745e+02  4.609e+05
+## countryTJ                                           1.036e+02  5.746e+05
+## countryTL                                           8.297e+01  5.202e+05
+## countryTR                                           1.848e+02  4.093e+05
+## countryTT                                           1.565e+02  6.085e+05
+## countryTZ                                           8.811e+01  5.656e+05
+## countryUA                                           1.796e+02  4.484e+05
+## countryUG                                           1.487e+02  4.037e+05
+## countryUS                                           1.594e+02  5.391e+05
+## countryUZ                                           1.963e+01  5.986e+05
+## countryVE                                          -2.816e+01  4.636e+05
+## countryVN                                           7.105e+01  4.895e+05
+## countryYE                                           8.455e+01  5.424e+05
+## countryZA                                           1.431e+02  4.563e+05
+## countryZM                                           8.360e+01  6.371e+05
+## countryZW                                          -4.093e+00  4.289e+05
+##                                                    z value Pr(>|z|)
+## (Intercept)                                         -0.001    0.999
+## gendermale                                           0.000    1.000
+## gendernonbinary                                     -0.001    0.999
+## genderother                                         -0.001    1.000
+## age_range>65                                         0.000    1.000
+## age_range18-25                                       0.000    1.000
+## age_range26-35                                       0.000    1.000
+## age_range36-45                                       0.000    1.000
+## age_range46-55                                       0.000    1.000
+## age_range56-65                                       0.000    1.000
+## highest_education_levelless_than_secondary           0.001    1.000
+## highest_education_levelprofessional                  0.001    0.999
+## highest_education_levelsecondary                     0.001    0.999
+## highest_education_leveltertiary                      0.001    0.999
+## highest_education_leveluniversity_degree             0.001    0.999
+## highest_education_leveluniversity_doctorate          0.000    1.000
+## highest_education_leveluniversity_masters            0.001    0.999
+## employment_statuslooking_for_work                    0.000    1.000
+## employment_statusnot_working                         0.000    1.000
+## employment_statusretired                             0.000    1.000
+## employment_statusself_employed                       0.000    1.000
+## employment_statusunemployed                          0.000    1.000
+## employment_statusworking_full_time                   0.000    1.000
+## employment_statusworking_part_time                   0.000    1.000
+## employment_areaarmed_forces_and_emergency_services   0.001    1.000
+## employment_areabusiness_consulting_and_management    0.000    1.000
+## employment_areacharities_and_voluntary_work          0.000    1.000
+## employment_areacreative_arts_and_culture             0.000    1.000
+## employment_areaenergy_and_utilities                  0.001    0.999
+## employment_areaengineering_and_manufacturing         0.001    0.999
+## employment_areaenvironment_and_agriculture          -0.001    0.999
+## employment_areahealth_and_social_care                0.000    1.000
+## employment_areahospitality_tourism_and_sport         0.000    1.000
+## employment_areait_and_information_services           0.001    0.999
+## employment_arealaw                                   0.001    0.999
+## employment_areamarketing_advertising_and_pr          0.000    1.000
+## employment_areamedia_and_publishing                  0.001    1.000
+## employment_areaproperty_and_construction             0.000    1.000
+## employment_areapublic_sector                         0.001    1.000
+## employment_arearecruitment_and_pr                    0.000    1.000
+## employment_arearetail_and_sales                      0.000    1.000
+## employment_areascience_and_pharmaceuticals           0.000    1.000
+## employment_areateaching_and_education                0.001    0.999
+## employment_areatransport_and_logistics               0.000    1.000
+## countryAE                                            0.000    1.000
+## countryAF                                            0.000    1.000
+## countryAL                                            0.000    1.000
+## countryAM                                            0.000    1.000
+## countryAO                                            0.000    1.000
+## countryAR                                            0.000    1.000
+## countryAT                                            0.000    1.000
+## countryAU                                            0.001    0.999
+## countryAZ                                            0.000    1.000
+## countryBA                                            0.000    1.000
+## countryBB                                            0.001    0.999
+## countryBD                                            0.000    1.000
+## countryBE                                            0.000    1.000
+## countryBG                                            0.000    1.000
+## countryBO                                            0.000    1.000
+## countryBR                                            0.000    1.000
+## countryBW                                            0.000    1.000
+## countryBY                                            0.000    1.000
+## countryCA                                            0.000    1.000
+## countryCH                                            0.000    1.000
+## countryCI                                            0.000    1.000
+## countryCL                                            0.000    1.000
+## countryCM                                            0.000    1.000
+## countryCN                                            0.000    1.000
+## countryCO                                            0.000    1.000
+## countryCR                                            0.000    1.000
+## countryCW                                            0.000    1.000
+## countryCY                                            0.000    1.000
+## countryDE                                            0.001    0.999
+## countryDK                                            0.000    1.000
+## countryEC                                            0.000    1.000
+## countryEG                                            0.001    1.000
+## countryES                                            0.000    1.000
+## countryET                                            0.000    1.000
+## countryFJ                                            0.000    1.000
+## countryFR                                            0.000    1.000
+## countryGB                                            0.000    1.000
+## countryGG                                            0.000    1.000
+## countryGH                                            0.000    1.000
+## countryGI                                            0.000    1.000
+## countryGR                                            0.000    1.000
+## countryGY                                            0.000    1.000
+## countryHK                                            0.000    1.000
+## countryHN                                            0.000    1.000
+## countryHR                                            0.000    1.000
+## countryHT                                            0.000    1.000
+## countryHU                                            0.000    1.000
+## countryID                                            0.000    1.000
+## countryIE                                            0.001    1.000
+## countryIL                                            0.000    1.000
+## countryIN                                            0.001    1.000
+## countryIQ                                            0.000    1.000
+## countryIR                                            0.000    1.000
+## countryIT                                            0.001    1.000
+## countryJE                                            0.000    1.000
+## countryJO                                            0.000    1.000
+## countryJP                                            0.000    1.000
+## countryKE                                            0.000    1.000
+## countryKH                                            0.000    1.000
+## countryKR                                            0.000    1.000
+## countryLK                                            0.000    1.000
+## countryLR                                            0.000    1.000
+## countryLT                                            0.000    1.000
+## countryLV                                            0.000    1.000
+## countryMD                                            0.000    1.000
+## countryME                                            0.000    1.000
+## countryMK                                            0.000    1.000
+## countryMM                                            0.000    1.000
+## countryMN                                            0.000    1.000
+## countryMU                                            0.000    1.000
+## countryMW                                            0.000    1.000
+## countryMX                                            0.000    1.000
+## countryMY                                            0.000    1.000
+## countryNG                                            0.000    1.000
+## countryNL                                            0.001    0.999
+## countryNO                                            0.000    1.000
+## countryNP                                            0.000    1.000
+## countryNZ                                            0.000    1.000
+## countryOM                                            0.000    1.000
+## countryPE                                            0.000    1.000
+## countryPH                                            0.000    1.000
+## countryPK                                            0.000    1.000
+## countryPL                                            0.000    1.000
+## countryPT                                            0.000    1.000
+## countryRO                                            0.000    1.000
+## countryRS                                            0.000    1.000
+## countryRU                                            0.000    1.000
+## countryRW                                            0.000    1.000
+## countrySA                                            0.000    1.000
+## countrySD                                            0.000    1.000
+## countrySE                                            0.001    0.999
+## countrySG                                            0.001    1.000
+## countrySV                                            0.000    1.000
+## countryTH                                            0.000    1.000
+## countryTJ                                            0.000    1.000
+## countryTL                                            0.000    1.000
+## countryTR                                            0.000    1.000
+## countryTT                                            0.000    1.000
+## countryTZ                                            0.000    1.000
+## countryUA                                            0.000    1.000
+## countryUG                                            0.000    1.000
+## countryUS                                            0.000    1.000
+## countryUZ                                            0.000    1.000
+## countryVE                                            0.000    1.000
+## countryVN                                            0.000    1.000
+## countryYE                                            0.000    1.000
+## countryZA                                            0.000    1.000
+## countryZM                                            0.000    1.000
+## countryZW                                            0.000    1.000
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 8.5046e+01  on 1122  degrees of freedom
+## Residual deviance: 3.0346e-07  on  970  degrees of freedom
+## AIC: 306
+## 
+## Number of Fisher Scoring iterations: 25
+\end{verbatim}
+
+\end{document}
