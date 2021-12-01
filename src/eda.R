@@ -97,7 +97,7 @@ ggplot(detected_country_1,aes(x=detected_country_1[,1],y=detected_country_1[,2],
 #2
 ggplot(t, aes(x=quiz_question,y=answers_numbers,fill=answers_numbers))+geom_bar(stat="identity")+coord_polar(theta = "x", direction=1)
 picture=ggplot(t_1, aes(x=question,y=No.people,fill=No.people))+geom_bar(stat="identity")+coord_polar(theta = "x", direction=1)
-picture+scale_fill_gradient(low='white',high='red')+ #渐变色填充，由白到红
+picture+scale_fill_gradient(low='white',high='red')+ #Gradient colour fill, from white to red
   theme_bw()
 pictire_1=ggplot(rep, aes(x=question_1,y=repeated_answers,fill=repeated_answers))+geom_bar(stat="identity")+coord_polar(theta = "x", direction=1)
 pictire_1 +scale_fill_gradient(low='pink',high='green')+ 

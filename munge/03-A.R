@@ -24,20 +24,20 @@ t_4
 #drawings
 ggplot(t_2, aes(x = step, y = numbers)) + geom_boxplot() 
 ggplot (t_2, aes (x = step, y = numbers, size = numbers, colour =numbers)) +
-  # 散点图函数：alpha设置散点透明度
+  # Scatter plot function: alpha sets the scatter transparency
   geom_point (position = "jitter") +
-  # 使散点的面积正比与变量值
+  #  Make the area of the scatter positively proportional to the value of the variable
   scale_size_area () +scale_color_gradient2(low = "yellow", mid = "green", high = "brown")
 ggplot(t_3, aes(x = step, y = numbers_null)) +  geom_boxplot()
 ggplot (t_3, aes (x = step, y = numbers_null, size = numbers_null, colour =numbers_null)) +
-  # 散点图函数：alpha设置散点透明度
+  # Scatter plot function: alpha sets the scatter transparency
   geom_point (position = "jitter") +
-  # 使散点的面积正比与变量值
+  # Make the area of the scatter proportional to the value of the variable
   scale_size_area () +scale_color_gradient2(low = "pink", mid = "red", high = "blue")
 ggplot(t_4, aes(x = step, y = Percentage)) + geom_boxplot() 
 ggplot (t_4, aes (x = step, y = Percentage, size = Percentage, colour =Percentage)) +
-  # 散点图函数：alpha设置散点透明度
+  # Scatter plot function: alpha sets the scatter transparency
   geom_point (position = "jitter") +
-  # 使散点的面积正比与变量值
+  # Make the area of the scatter positively proportional to the value of the variable
   scale_size_area () +scale_color_gradient2(low = "blue", mid = "orange", high = "purple")
 

@@ -5,21 +5,42 @@ date: "11/23/2021"
 output: pdf_document
 ---
 
+
+
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 knitr::opts_knit$set(root.dir=normalizePath('..'))
 ```
 
-## R Markdown
-
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
 
 ```{r ProjectTemplate,include=FALSE}
-library(ProjectTemplate)
+setwd("/Users/wangyahan/Desktop/Data Management and Explor/DM")
+library('ProjectTemplate')
 load.project()
 ```
+
+# Business Understanding
+  The task of the business understanding phase is to articulate the goals and requirements of data mining from a business perspective and translate them into specific data mining problems. The objective of this paper is to measure, collect, analyse and report data about learners and their environment in order to understand and optimise  their  learning environment. For learners who are less motivated to attend classes, this may be influenced by a number of factors such as gender, difficulty of the course taken, country, major, and age. The key to optimising  its learning environment is therefore to portray the factors that influence learner motivation based on learner characteristics and other supplementary data sources (e.g. access to on-campus facilities, Virtual Learning Environment (VLE) and Re-Cap visits, and student welfare referrals).
+
+# Data Understanding
+  Data quality checking and initial characterisation, which is essentially a process of data collection and familiarisation, Found in practice, age range of learners, gender, highest level of education, employment status, region of employment, country, , survey responses, leaving survey responses, step activity, question responses, video statistics .... etc,can affect learners' motivation to learn.
+  The data used in this paper are derived from a school's student information management warehouse, with detailed records of learner characteristics and other complementary data sources (e.g. use of on-campus facilities, Virtual Learning Environment (VLE) and Re-Cap access, and student welfare referrals).
+  In order to facilitate student management, schools set up learner ids for each student, record enrolment information (e.g. gender, country, major, age, etc.) and keep records of step activities, question answers, etc. This paper will divide students by the number of questions they answer, the difference in the number of questions answered by students is more significant, so this paper will model the factors that influence the number of questions answered by students to be explored
+  
+# Data preparation.
+  The data preparation phase covers all the work involved in constructing the final dataset (for modelling analysis) from the raw rough data, including steps such as data cleaning and variable selection.
+## Selecting data
+   Task:First select the seven enrolments form.This is because the seven forms contain a lot of information about the learner, such as age range, gender, highest level of education, employment status, region of employment, country, etc.This may have an impact on the number of questions answered, the number of step activities, and the number of videos viewed by learners.Seven question response forms were then selected, which allowed for statistics on the number of responses per learner and the number and frequency of responses per question.Then select the seven Step activity tables, which will give you an idea of the number of people who completed and did not complete the activity at each step.Based on these video stats tables, you can see the popularity of each of the step videos.All this data has a crucial impact on portraying the factors that influence learners' motivation and optimising  its learning environment.
+    Output:In the seven enrolments tables, select age_range, highest_education_level, employment_status, employment_area,country and detected_country as the data to be used later, because these data can be used to explore the correlation with learner motivation, the enrolled at and unenrolled at cannot be used to explore learner motivation, and all the roles are learners, so they are removed.
+    The seven question response forms leave the learner id and quiz_question, and correct.Because the question type is only one type of question that is MultipleChoice. The week number, step number and question number are all included in the quiz_question, The answer in the response is used to determine whether the correct is TRUE or FALSE, and the final result only depends on the correct so all this data needs to be removed.
+    The seven Step activity tables need to leave the learner_id and step columns, and also need to leave first_visited_at, last_completed_at to determine if the learner is responding to the answer, based on the observation that as long as first_visited_at, last_completed_at both information is available. In the question response form there must be a response and a correct(TRUE or FALSE).However, the information on week_number and step_number is contained in the step so these data need to be deleted.
+## Describe data
+```{r}
+str(cyber.security.enrolments,vec.len  =1)
+```
+
+
 
 ## Including Plots
 
@@ -44,7 +65,7 @@ Note that the `echo = FALSE` parameter was added to the code chunk to prevent pr
 
 ggplot(t, aes(x=quiz_question,y=answers_numbers,fill=answers_numbers))+geom_bar(stat="identity")+coord_polar(theta = "x", direction=1)
 picture=ggplot(t_1, aes(x=question,y=No.people,fill=No.people))+geom_bar(stat="identity")+coord_polar(theta = "x", direction=1)
-picture+scale_fill_gradient(low='white',high='red')+ #渐变色填充，由白到红
+picture+scale_fill_gradient(low='white',high='red')+ #Gradient colour fill, from white to red
   theme_bw()
 pictire_1=ggplot(rep, aes(x=question_1,y=repeated_answers,fill=repeated_answers))+geom_bar(stat="identity")+coord_polar(theta = "x", direction=1)
 pictire_1 +scale_fill_gradient(low='pink',high='green')+ 
@@ -53,33 +74,36 @@ pictire_1 +scale_fill_gradient(low='pink',high='green')+
 ```{r}
 ggplot(t_2, aes(x = step, y = numbers)) + geom_boxplot() 
 ggplot (t_2, aes (x = step, y = numbers, size = numbers, colour =numbers)) +
-  # 散点图函数：alpha设置散点透明度
+  # Scatter function: alpha sets the transparency of the scatter.
   geom_point (position = "jitter") +
-  # 使散点的面积正比与变量值
+  # Make the area of the scatter positively proportional to the value of the variable.
   scale_size_area () +scale_color_gradient2(low = "yellow", mid = "green", high = "brown")
 ggplot(t_3, aes(x = step, y = numbers_null)) +  geom_boxplot()
 ggplot (t_3, aes (x = step, y = numbers_null, size = numbers_null, colour =numbers_null)) +
-  # 散点图函数：alpha设置散点透明度
+  #  Scatter plot function: alpha sets the scatter transparency
   geom_point (position = "jitter") +
-  # 使散点的面积正比与变量值
+  # Make the area of the scatter positively proportional to the value of the variable
   scale_size_area () +scale_color_gradient2(low = "pink", mid = "red", high = "blue")
 ggplot(t_4, aes(x = step, y = Percentage)) + geom_boxplot() 
 ggplot (t_4, aes (x = step, y = Percentage, size = Percentage, colour =Percentage)) +
-  # 散点图函数：alpha设置散点透明度
+  # Scatter plot function: alpha sets the scatter transparency
   geom_point (position = "jitter") +
-  # 使散点的面积正比与变量值
+  # Make the area of the scatter positively proportional to the value of the variable
   scale_size_area () +scale_color_gradient2(low = "blue", mid = "orange", high = "purple")
 
 ```
 
+```{r}
 
+```
 
 ```{r }
 
-United_1$Number_of_courses <- as.factor(United_1$Number_of_courses)
-fit.full=glm(Number_of_courses~gender+age_range+highest_education_level+employment_status+employment_area+country,data=United_1,family=binomial())
-summary(fit.full) 
 
+fit.full=lm(Number_of_courses~gender+age_range+highest_education_level,data=data1)
+summary(fit.full) 
+plot(fit.full)
+plot(data1$Number_of_courses,predict(fit.full,data1))
 
 
 ```
