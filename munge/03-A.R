@@ -4,6 +4,7 @@ cyber.security.step.activity_1=bind_rows(cyber.security.1_step.activity,cyber.se
 (t_2=table(cyber.security.step.activity_1$step))
 step_null=cyber.security.step.activity_1 %>% filter(last_completed_at == "")
 t_3=table(step_null$step)
+t_3
 t_2=as.data.frame(t_2)
 t_3=as.data.frame(t_3)
 t_4=data.frame(1:58,1:2)
@@ -15,7 +16,6 @@ colnames(t_4) = c("step","Percentage")
 t_4$step=t_3$step
 t_4['Percentage'] = t_3$numbers_null/t_2$numbers
 t_4$number=t_3$number
-
 t_2
 t_3
 t_4

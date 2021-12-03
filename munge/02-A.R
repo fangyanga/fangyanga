@@ -77,3 +77,4 @@ picture+scale_fill_gradient(low='white',high='red')+
 pictire_1=ggplot(rep, aes(x=question_1,y=repeated_answers,fill=repeated_answers))+geom_bar(stat="identity")+coord_polar(theta = "x", direction=1)
 pictire_1 +scale_fill_gradient(low='pink',high='green')+ 
   theme_bw()
+
